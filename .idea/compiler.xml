@@ -19,7 +19,7 @@
         <module name="DesktopChanger" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="DesktopChanger" target="1.5" />
     </bytecodeTargetLevel>
   </component>

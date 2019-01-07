@@ -189,3 +189,10 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.gitignore.io/api/java,maven,eclipse,intellij
+
+# Start of project specific files
+
+### Program generated files ###
+config/
+
+# End of project specific files
