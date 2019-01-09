@@ -10,6 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class DesktopChanger extends Application {
 
     private static Configuration config;
@@ -25,10 +28,20 @@ public class DesktopChanger extends Application {
 
     public static void main(String[] args) {
         config = new Configuration();
-        setBackground("C:\\Users\\Matthew\\Downloads\\imageproxy (2).jpg");
+        startTimer();
+        startTimer();
         launch(args);
     }
 
+    private static void startTimer () {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                setBackground("C:\\Users\\Matthew\\Downloads\\982763.jpg");
+            }
+        }, 0L, config.determineTimer());
+    }
     public static void setBackground(String path) {
         SPI.INSTANCE.SystemParametersInfo(
                 new WinDef.UINT_PTR(SPI.SPI_SETDESKWALLPAPER),
