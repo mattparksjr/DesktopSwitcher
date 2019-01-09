@@ -42,6 +42,7 @@ public class DesktopChanger extends Application {
             }
         }, 0L, config.determineTimer());
     }
+
     public static void setBackground(String path) {
         SPI.INSTANCE.SystemParametersInfo(
                 new WinDef.UINT_PTR(SPI.SPI_SETDESKWALLPAPER),
