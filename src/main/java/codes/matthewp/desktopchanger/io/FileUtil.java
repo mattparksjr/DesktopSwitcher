@@ -10,7 +10,8 @@ public class FileUtil {
 
     /**
      * Utility to copy one file to another
-     * @param src File to copy from
+     *
+     * @param src  File to copy from
      * @param dest File to be written to
      */
     public static void copyFile(File src, File dest) throws IOException {

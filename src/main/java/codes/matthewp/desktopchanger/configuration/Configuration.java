@@ -2,19 +2,19 @@ package codes.matthewp.desktopchanger.configuration;
 
 import codes.matthewp.desktopchanger.io.FileUtil;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Configuration {
 
+    public String imagePath;
     private Properties prop;
-
     private File configFolder = new File("config/");
     private File imgFolder = new File("imgs/");
-
     private File configFile = new File("config/main.config");
-
-    public String imagePath;
 
     public Configuration() {
         prop = new Properties();
@@ -24,6 +24,7 @@ public class Configuration {
 
     /**
      * Used to read the config and determine the configured time setting
+     *
      * @return Time setting in milliseconds
      */
     public int determineTimer() {
@@ -55,7 +56,7 @@ public class Configuration {
     }
 
     private void testIntegrity() {
-        if(!imgFolder.exists()) {
+        if (!imgFolder.exists()) {
             imgFolder.mkdir();
         }
         if (!configFile.exists()) {

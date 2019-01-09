@@ -2,7 +2,9 @@ package codes.matthewp.desktopchanger.core;
 
 import com.sun.jna.Native;
 import com.sun.jna.platform.win32.WinDef;
-import com.sun.jna.win32.*;
+import com.sun.jna.win32.StdCallLibrary;
+import com.sun.jna.win32.W32APIFunctionMapper;
+import com.sun.jna.win32.W32APITypeMapper;
 
 import java.util.HashMap;
 

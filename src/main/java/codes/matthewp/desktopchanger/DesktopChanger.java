@@ -11,22 +11,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileFilter;
-import java.io.FilenameFilter;
 import java.util.*;
 
 public class DesktopChanger extends Application {
 
     private static Configuration config;
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-        Platform.setImplicitExit(false);
-    }
 
     public static void main(String[] args) {
         config = new Configuration();
@@ -35,7 +24,7 @@ public class DesktopChanger extends Application {
         launch(args);
     }
 
-    private static void startTimer () {
+    private static void startTimer() {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             // TODO: Inefficent af
@@ -46,8 +35,8 @@ public class DesktopChanger extends Application {
                 File[] rawFiles = imgFolder.listFiles();
                 List<File> backgrounds = new ArrayList<>();
 
-                for(File f : rawFiles) {
-                    if(getFileExtension(f).equals("jpg") || getFileExtension(f).equals("png") || getFileExtension(f).equals("jpeg")) {
+                for (File f : rawFiles) {
+                    if (getFileExtension(f).equals("jpg") || getFileExtension(f).equals("png") || getFileExtension(f).equals("jpeg")) {
                         backgrounds.add(f);
                     }
                 }
@@ -69,8 +58,17 @@ public class DesktopChanger extends Application {
     private static String getFileExtension(File file) {
         int i = file.getName().lastIndexOf('.');
         if (i > 0) {
-            return file.getName().substring(i+1);
+            return file.getName().substring(i + 1);
         }
         return "";
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
+        Platform.setImplicitExit(false);
     }
 }
