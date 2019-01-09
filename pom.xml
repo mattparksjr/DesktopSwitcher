@@ -8,5 +8,19 @@
     <artifactId>DesktopChanger</artifactId>
     <version>0.0.1-ALPHA</version>
 
-    
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+    </dependencies>
+
 </project>
