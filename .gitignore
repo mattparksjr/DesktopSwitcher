@@ -195,4 +195,6 @@ buildNumber.properties
 ### Program generated files ###
 config/
 
+imgs/
+
 # End of project specific files

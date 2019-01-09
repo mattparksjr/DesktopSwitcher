@@ -10,16 +10,16 @@ public class Configuration {
     private Properties prop;
 
     private File configFolder = new File("config/");
+    private File imgFolder = new File("imgs/");
+
     private File configFile = new File("config/main.config");
 
+    public String imagePath;
 
     public Configuration() {
         prop = new Properties();
         testIntegrity();
         load();
-
-        System.out.println(prop.getProperty("timer.type"));
-        System.out.println(prop.getProperty("timer.timeint"));
     }
 
     /**
@@ -51,9 +51,13 @@ public class Configuration {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        imagePath = prop.getProperty("img.path");
     }
 
     private void testIntegrity() {
+        if(!imgFolder.exists()) {
+            imgFolder.mkdir();
+        }
         if (!configFile.exists()) {
             configFolder.mkdir();
             try {

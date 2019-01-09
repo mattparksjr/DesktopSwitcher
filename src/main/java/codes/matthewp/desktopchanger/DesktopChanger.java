@@ -10,8 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FilenameFilter;
+import java.util.*;
 
 public class DesktopChanger extends Application {
 
@@ -36,9 +38,22 @@ public class DesktopChanger extends Application {
     private static void startTimer () {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
+            // TODO: Inefficent af
             @Override
             public void run() {
-                setBackground("C:\\Users\\Matthew\\Downloads\\982763.jpg");
+
+                File imgFolder = new File(config.imagePath);
+                File[] rawFiles = imgFolder.listFiles();
+                List<File> backgrounds = new ArrayList<>();
+
+                for(File f : rawFiles) {
+                    if(getFileExtension(f).equals("jpg") || getFileExtension(f).equals("png") || getFileExtension(f).equals("jpeg")) {
+                        backgrounds.add(f);
+                    }
+                }
+
+                int ran = new Random().nextInt(backgrounds.size());
+                setBackground(backgrounds.get(ran).getAbsolutePath());
             }
         }, 0L, config.determineTimer());
     }
@@ -49,5 +64,13 @@ public class DesktopChanger extends Application {
                 new WinDef.UINT_PTR(0),
                 path,
                 new WinDef.UINT_PTR(SPI.SPIF_UPDATEINIFILE | SPI.SPIF_SENDWININICHANGE));
+    }
+
+    private static String getFileExtension(File file) {
+        int i = file.getName().lastIndexOf('.');
+        if (i > 0) {
+            return file.getName().substring(i+1);
+        }
+        return "";
     }
 }
